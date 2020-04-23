@@ -10,6 +10,6 @@ void SNP(ListN LN, ListP LP);
 void SNW(ListN LN, ListP LP);
 void SNM(ListP LP);
 void SCA();
-void menu();
+void menu(ListP &LP, ListN &LN);
 
 #endif // MENU_H_INCLUDED

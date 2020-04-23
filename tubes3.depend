@@ -32,8 +32,16 @@
 1587625140 e:\kuliah\semester 2\std\tubes3\penulis.h
 	<iostream>
 
-1587619250 source:e:\kuliah\semester 2\std\tubes3\main.cpp
+1587644906 source:e:\kuliah\semester 2\std\tubes3\main.cpp
 	<iostream>
 	"penulis.h"
 	"novel.h"
+	"menu.h"
+
+1587644919 e:\kuliah\semester 2\std\tubes3\menu.h
+
+1587645083 source:e:\kuliah\semester 2\std\tubes3\menu.cpp
+	"novel.h"
+	"penulis.h"
+	"menu.h"
 

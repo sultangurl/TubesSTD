@@ -2,13 +2,13 @@
 #include "penulis.h"
 #include "menu.h"
 
-void AA(ListP &LP, adrP P) {
+void AA(ListP &LP, adrP P, ListN LN) {
     string nama;
     bool f = false;
     cout<<"Masukkan nama penulis :"<<endl;
     while (!f) {
         cin>>nama;
-        if (nama=="000") {
+        if (nama=="stop") {
             f = true;
         } else {
             P = createNewP(nama);
@@ -17,15 +17,15 @@ void AA(ListP &LP, adrP P) {
     }
     cout<<endl;
     cout<<"______________________________________"<<endl;
-    menu();
+    menu(LP, LN);
 }
-void AN(ListN &LN, adrN N) {
+void AN(ListN &LN, adrN N, ListP LP) {
     string judul;
     bool f = false;
-    cout<<"Masukkan judul novel :"<<endl;
+    cout<<"Masukan judul novel :"<<endl;
     while (!f) {
         cin>>judul;
-        if (judul=="000") {
+        if (judul=="stop") {
             f = true;
         } else {
             N = createNewN(judul);
@@ -34,7 +34,7 @@ void AN(ListN &LN, adrN N) {
     }
     cout<<endl;
     cout<<"______________________________________"<<endl;
-    menu();
+    menu(LP, LN);
 }
 void conn(ListP &LP, ListN &LN) {
     bool f = false;
@@ -68,7 +68,7 @@ void conn(ListP &LP, ListN &LN) {
     }
     cout<<endl;
     cout<<"______________________________________"<<endl;
-    menu();
+    menu(LP, LN);
 }
 void DA();
 void DN();
@@ -89,14 +89,14 @@ void SNP(ListN LN, ListP LP){
             }
             P=next(P);
         }
-        if (f=false) {
+        if (f = false) {
             cout<<"Unknown"<<endl;
         }
         N=next(N);
     }
     cout<<endl;
     cout<<"______________________________________"<<endl;
-    menu();
+    menu(LP, LN);
 }
 void SNW(ListN LN, ListP LP) {
     bool f = false;
@@ -121,15 +121,16 @@ void SNW(ListN LN, ListP LP) {
         }
         N=next(N);
     }
-    if (f=false) {
+    if (f = false) {
         cout<<"None"<<endl;
     }
     cout<<endl;
     cout<<"______________________________________"<<endl;
-    menu();
+    menu(LP, LN);
 }
-void SNM(ListP LP) {
+void SNM(ListP LP, ListN LN) {
     adrP P = first(LP);
+    adrP Q;
     int Max = 0;
     while (P!=NULL) {
         int i = 0;
@@ -140,14 +141,23 @@ void SNM(ListP LP) {
         }
         if (Max<i){
             Max = i;
+            Q = P;
         }
         P=next(P);
+    }
+    cout<<"Author who wrote the most is "<<info(Q)<<endl;
+    cout<<endl;
+    cout<<"______________________________________"<<endl;
+    menu(LP, LN);
 }
-void SCA() {
-
-}
-void menu() {
+void SCA();
+void menu(ListP &LP, ListN &LN) {
     int x;
+
+    adrP P;
+    adrN N;
+    adrR R;
+
     cout<<"Menu Program: "<<endl;
 	cout<<"1. Add Author"<<"                "<<"5. Delete Novel"<<endl;
 	cout<<"2. Add Novel"<<"                 "<<"6. Show Novel with Particular Author"<<endl;
@@ -159,27 +169,27 @@ void menu() {
 	cout<<"Pilih menu: ";
 	cin>>x;
 	if (x==1) {
-        AA();
+        AA(LP, P, LN);
 	} else if (x==2) {
-        AN();
+        AN(LN, N, LP);
 	} else if (x==3) {
-        conn();
+        conn(LP, LN);
 	} else if (x==4) {
-        DA();
+       // DA();
 	} else if (x==5) {
-        DN();
+       // DN();
 	} else if (x==6) {
-        SNP();
+        SNP(LN, LP);
 	} else if (x==7) {
-        SNW();
+        SNW(LN, LP);
 	} else if (x==8) {
-        SNM();
+        SNM(LP, LN);
 	} else if (x==9) {
-        SCA();
+        //SCA();
 	} else if (x==000) {
-
+        cout<<"Close Program"<<endl;
 	} else {
         cout<<"Not found, Try again"<<endl;
-        menu()
+        menu(LP, LN);
 	}
 }
