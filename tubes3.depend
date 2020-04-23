@@ -1,0 +1,39 @@
+# depslib dependency file v1.0
+1587485121 source:d:\telyu\matkul\std\tubes3\main.cpp
+	<iostream>
+	"penulis.h"
+	"novel.h"
+
+1587483645 source:d:\telyu\matkul\std\tubes3\novel.cpp
+	<iostream>
+	"novel.h"
+
+1587480212 d:\telyu\matkul\std\tubes3\novel.h
+
+1587484142 source:d:\telyu\matkul\std\tubes3\penulis.cpp
+	<iostream>
+	"penulis.h"
+	"novel.h"
+
+1587483694 d:\telyu\matkul\std\tubes3\penulis.h
+
+1587483645 source:e:\kuliah\semester 2\std\tubes3\novel.cpp
+	<iostream>
+	"novel.h"
+
+1587625166 e:\kuliah\semester 2\std\tubes3\novel.h
+	<iostream>
+
+1587619004 source:e:\kuliah\semester 2\std\tubes3\penulis.cpp
+	<iostream>
+	"penulis.h"
+	"novel.h"
+
+1587625140 e:\kuliah\semester 2\std\tubes3\penulis.h
+	<iostream>
+
+1587619250 source:e:\kuliah\semester 2\std\tubes3\main.cpp
+	<iostream>
+	"penulis.h"
+	"novel.h"
+
