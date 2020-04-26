@@ -150,7 +150,38 @@ void SNM(ListP LP, ListN LN) {
     cout<<"______________________________________"<<endl;
     menu(LP, LN);
 }
-void SCA();
+void SCA(ListN LN, ListP LP) {
+    adrP P = first(LP);
+    cout<<"Penulis yang tidak berkolaborasi: "<<endl;
+    while (P!=NULL) {
+        int i = 0;
+        adrR R = firstR(P);
+        while (R!=NULL) {
+            adrP Q = first(LP);
+            while (Q!=NULL) {
+                adrR S = firstR(Q);
+                while (S!=NULL) {
+                    if (info(P)==info(Q)) {
+                        break;
+                    }
+                    if (infoR(R)==infoR(S)) {
+                        i++;
+                    }
+                    S=nextR(S);
+                }
+                Q=next(Q);
+            }
+            R=nextR(R);
+        }
+        if (i==0) {
+            cout<<"- "<<info(P)<<endl;
+        }
+        P=next(P);
+    }
+    cout<<endl;
+    cout<<"______________________________________"<<endl;
+    menu(LP, LN);
+}
 void menu(ListP &LP, ListN &LN) {
     int x;
 
@@ -185,7 +216,7 @@ void menu(ListP &LP, ListN &LN) {
 	} else if (x==8) {
         SNM(LP, LN);
 	} else if (x==9) {
-        //SCA();
+        SCA(LN, LP);
 	} else if (x==000) {
         cout<<"Close Program"<<endl;
 	} else {

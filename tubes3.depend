@@ -45,3 +45,31 @@
 	"penulis.h"
 	"menu.h"
 
+1587644906 source:e:\new folder\tubesstd\main.cpp
+	<iostream>
+	"penulis.h"
+	"novel.h"
+	"menu.h"
+
+1587625140 e:\new folder\tubesstd\penulis.h
+	<iostream>
+
+1587625166 e:\new folder\tubesstd\novel.h
+	<iostream>
+
+1587873204 e:\new folder\tubesstd\menu.h
+
+1587483645 source:e:\new folder\tubesstd\novel.cpp
+	<iostream>
+	"novel.h"
+
+1587619004 source:e:\new folder\tubesstd\penulis.cpp
+	<iostream>
+	"penulis.h"
+	"novel.h"
+
+1587873204 source:e:\new folder\tubesstd\menu.cpp
+	"novel.h"
+	"penulis.h"
+	"menu.h"
+
