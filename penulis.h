@@ -10,7 +10,7 @@
 
 using namespace std;
 typedef struct penulis *adrP;
-typedef struct relasi *adrR;
+typedef struct yagimana *adrR;
 
 struct penulis {
     string info;
@@ -18,7 +18,7 @@ struct penulis {
     adrR firstR;
 };
 
-struct relasi {
+struct yagimana {
     adrR nextR;
     string infoR;
 };
@@ -33,17 +33,9 @@ adrP createNewP(string nama);
 adrR createNewR(string judul);
 void addP(ListP &L, adrP P);
 void addR(adrP P, adrR R);
-void deleteP(ListP &L, adrP P);
-void deleteFirstP(ListP &L, adrP &P);
-void deleteLastP(ListP &L);
-void deleteAfterP(ListP &L, adrP prec);
-void deleteR(ListP &L, adrR P);
-void deleteFirstR(ListP &L, adrR &P, adrP Q);
-void deleteLastR(ListP &L, adrP Q);
-void deleteAfterR(adrR prec, adrP Q);
-adrR findR(adrP P, string judul);
+adrR findR(adrP P);
 adrP findP(ListP L, string nama);
-void relasikan(adrP P, adrR R);
+void relasi(adrP P, adrR R);
 void showP(ListP L);
 
 #endif // PENULIS_H_INCLUDED

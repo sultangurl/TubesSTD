@@ -5,7 +5,6 @@
 void AA(ListP &LP, adrP P, ListN LN) {
     string nama;
     bool f = false;
-    showP(LP);
     cout<<"Masukkan nama penulis :"<<endl;
     while (!f) {
         cin>>nama;
@@ -17,14 +16,12 @@ void AA(ListP &LP, adrP P, ListN LN) {
         }
     }
     cout<<endl;
-    showP(LP);
     cout<<"______________________________________"<<endl;
     menu(LP, LN);
 }
 void AN(ListN &LN, adrN N, ListP LP) {
     string judul;
     bool f = false;
-    showN(LN);
     cout<<"Masukan judul novel :"<<endl;
     while (!f) {
         cin>>judul;
@@ -36,20 +33,18 @@ void AN(ListN &LN, adrN N, ListP LP) {
         }
     }
     cout<<endl;
-    showN(LN);
     cout<<"______________________________________"<<endl;
     menu(LP, LN);
 }
 void conn(ListP &LP, ListN &LN) {
     bool f = false;
     string nama, judul;
-    showP(LP);
-    showN(LN);
+    cout<<"Relasikan? Skuy."<<endl;
     cout<<"Masukkan nama penulis dan novel yang ingin direlasikan:"<<endl;
     while (!f) {
         cout<<"Nama Penulis:";
         cin>>nama;
-        if (nama=="stop") {
+        if (nama=="000") {
             break;
         }
         adrP P = findP(LP, nama);
@@ -59,14 +54,9 @@ void conn(ListP &LP, ListN &LN) {
         adrN N = findN(LN, judul);
 
         if (P != NULL && N != NULL) {
-            adrR f = findR(P, info(N));
-            if (f != NULL) {
-                cout<<"Relasi gagal, penulis dan novel telah terelasi."<<endl;
-            } else {
-                adrR R = createNewR(info(N));
-                relasikan(P, R);
-                cout<<"Relasi berhasil."<<endl;
-            }
+            adrR R = createNewR(info(N));
+            relasi(P, R);
+            cout<<"Relasi berhasil."<<endl;
         } else if (P == NULL && N != NULL) {
             cout<<"Relasi gagal, penulis belum terdaftar."<<endl;
         } else if (P != NULL && N == NULL) {
@@ -80,44 +70,8 @@ void conn(ListP &LP, ListN &LN) {
     cout<<"______________________________________"<<endl;
     menu(LP, LN);
 }
-
-void DA(ListP &LP, ListN LN, adrP &P){
-    string nama;
-    showP(LP);
-    cout<<"Masukkan nama penulis yang ingin dihapus: ";
-    cin>>nama;
-    P = findP(LP, nama);
-    if (P != NULL) {
-        deleteP(LP, P);
-        cout<<endl<<"Penulis berhasil dihapus."<<endl;
-        showP(LP);
-    } else {
-         cout<<"Gagal menghapus penulis, penulis tidak ditemukan."<<endl;
-    }
-    cout<<endl;
-    cout<<"______________________________________"<<endl;
-    menu(LP, LN);
-}
-void DN(ListP &LP, ListN &LN, adrR &R, adrN &N){
-    string judul;
-    showN(LN);
-    cout<<"Masukkan judul novel yang ingin dihapus: ";
-    cin>>judul;
-    N = findN(LN, judul);
-    if (N != NULL) {
-        infoR(R) = info(N);
-        deleteR(LP, R);
-        deleteN(LN, N);
-        cout<<"Novel berhasil dihapus."<<endl;
-        showN(LN);
-    } else {
-        cout<<"Gagal menghapus novel, novel tidak ditemukan."<<endl;
-    }
-    cout<<endl;
-    cout<<"______________________________________"<<endl;
-    menu(LP, LN);
-}
-
+void DA();
+void DN();
 void SNP(ListN LN, ListP LP){
     adrN N = first(LN);
     while (N!=NULL) {
@@ -228,34 +182,6 @@ void SCA(ListN LN, ListP LP) {
     cout<<"______________________________________"<<endl;
     menu(LP, LN);
 }
-
-void showPN(ListP LP, ListN LN) {
-    adrP P = first(LP);
-    cout<<"List penulis yang terdaftar:"<<endl;
-    while (P != NULL) {
-        cout << "Penulis: " << info(P) << endl;
-        adrR Q = firstR(P);
-        if (Q != NULL) {
-            while (Q != NULL) {
-                cout<<"-->Novel: "<<infoR(Q)<<endl;
-                Q = nextR(Q);
-            }
-            cout<<endl;
-        } else {
-            cout<<"Tidak ada Novel."<<endl;
-            cout<<endl;
-
-
-        }
-        P = next(P);
-    }
-    cout<<endl;
-    cout<<"______________________________________"<<endl;
-    menu(LP, LN);
-}
-
-void manual(ListP LP, ListN LN);
-
 void menu(ListP &LP, ListN &LN) {
     int x;
 
@@ -264,12 +190,11 @@ void menu(ListP &LP, ListN &LN) {
     adrR R;
 
     cout<<"Menu Program: "<<endl;
-	cout<<"1. Add Author"<<"                      "<<"7. Show Novel Written by 2 Author"<<endl;
-	cout<<"2. Add Novel"<<"                       "<<"8. Show Author Who Wrote The Most"<<endl;
-	cout<<"3. Connecting"<<"                      "<<"9. Show Collabless Author"<<endl;
-	cout<<"4. Delete Author "<<"                  "<<"10. Show All Authors and Novels"<<endl;
-	cout<<"5. Delete Novel"<<"                    "<<"11. Manual"<<endl;
-	cout<<"6. Show Novel --> Author"<<"           "<<"000. Close Program"<<endl;
+	cout<<"1. Add Author"<<"                "<<"5. Delete Novel"<<endl;
+	cout<<"2. Add Novel"<<"                 "<<"6. Show Novel with Particular Author"<<endl;
+	cout<<"3. Connecting"<<"                "<<"7. Show Novel Written by 2 Author"<<endl;
+	cout<<"4. Delete Author "<<"            "<<"8. Show Author Who Wrote The Most "<<endl;
+	cout<<"9. Show Collabless Author"<<"    "<<"000. Close Program"<<endl;
 
 	cout<<endl;
 	cout<<"Pilih menu: ";
@@ -281,9 +206,9 @@ void menu(ListP &LP, ListN &LN) {
 	} else if (x==3) {
         conn(LP, LN);
 	} else if (x==4) {
-        DA(LP, LN, P);
+       // DA();
 	} else if (x==5) {
-       DN(LP, LN, R, N);
+       // DN();
 	} else if (x==6) {
         SNP(LN, LP);
 	} else if (x==7) {
@@ -292,14 +217,10 @@ void menu(ListP &LP, ListN &LN) {
         SNM(LP, LN);
 	} else if (x==9) {
         SCA(LN, LP);
-	} else if (x==10) {
-        showPN(LP, LN);
-    } else if (x==11) {
-        //manual(LP, LN);
-    } else if (x==000) {
+	} else if (x==000) {
         cout<<"Close Program"<<endl;
 	} else {
-        cout<<"Not found, try again!"<<endl;
+        cout<<"Not found, Try again"<<endl;
         menu(LP, LN);
 	}
 }
