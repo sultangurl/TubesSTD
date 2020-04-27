@@ -73,31 +73,3 @@
 	"penulis.h"
 	"menu.h"
 
-1587892436 source:c:\users\rvn\documents\github\tubesstd\main.cpp
-	<iostream>
-	"penulis.h"
-	"novel.h"
-	"menu.h"
-
-1587966962 c:\users\rvn\documents\github\tubesstd\penulis.h
-	<iostream>
-
-1587893510 c:\users\rvn\documents\github\tubesstd\novel.h
-	<iostream>
-
-1587895242 c:\users\rvn\documents\github\tubesstd\menu.h
-
-1587916723 source:c:\users\rvn\documents\github\tubesstd\novel.cpp
-	<iostream>
-	"novel.h"
-
-1587966962 source:c:\users\rvn\documents\github\tubesstd\penulis.cpp
-	<iostream>
-	"penulis.h"
-	"novel.h"
-
-1587964334 source:c:\users\rvn\documents\github\tubesstd\menu.cpp
-	"novel.h"
-	"penulis.h"
-	"menu.h"
-
